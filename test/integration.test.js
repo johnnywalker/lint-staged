@@ -1046,6 +1046,8 @@ describe('lint-staged', () => {
   })
 
   it('should handle complex filename with shell option', async () => {
+    console = globalConsoleTemp
+
     const FILENAME = `&& touch 'evil.js'' && test.js`
     await appendFile(FILENAME, testJsFileUgly)
     expect(await readFile(FILENAME)).toEqual(testJsFileUgly)
